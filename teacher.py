@@ -32,4 +32,7 @@ class Teacher(object):
 		pass
 
 
-	def share_assignment(self, assignment)
+	def share_assignment(self, assignment):
+		""" Share assignment from Box """
+
+		pass
