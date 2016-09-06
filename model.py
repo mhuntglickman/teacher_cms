@@ -1,11 +1,17 @@
+"""Models and database functions for teacher_cms"""
+
 from flask_sqlalchemy import SQLAlchemy
+
 
 db = SQLAlchemy()
 
+##############################################################################################
+# These teachers are the users
 
+class Teacher (db.Model):
+    """Teachers"""
 
-
-
+    __tablename__ = "teachers"
 
 
 
