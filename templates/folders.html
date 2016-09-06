@@ -1,0 +1,8 @@
+<h1>Folders</h1>
+<h3>Folder Name: {{ root_folder['name'] }}</h3>
+<h3>Items in root</h3>
+<ul>
+	{% for item in items%}
+		<li>Item: {{ item }}</li>
+	{% endfor %}
+</ul>
