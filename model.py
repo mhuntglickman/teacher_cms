@@ -13,8 +13,20 @@ class Teacher (db.Model):
 
     __tablename__ = "teachers"
 
+	teacher_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    classes = db.Column(db.Integer, db.ForeignKey('classes.class_id'), nullable=False)
+    passenger_location = db.Column(db.String(100), nullable=False)
+    passenger_destination = db.Column(db.String(100), nullable=False)
+    pick_up_time = db.Column(db.DateTime, nullable=False)
+    passenger_rating = db.Column(db.Integer, nullable=True)
+    driver_rating = db.Column(db.Integer, nullable=True)
 
 
+	#define relationship to the driver
+    driver = db.relationship("Driver", backref="rides")
+
+    #define relationship to the user
+    passenger = db.relationship("Passenger", backref="rides")
 
 
 
