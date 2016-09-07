@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-##############################################################################################
+####################################################################################################
 # These teachers are the users
 
 class Teacher (db.Model):
@@ -13,34 +13,99 @@ class Teacher (db.Model):
 
     __tablename__ = "teachers"
 
-	teacher_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    classes = db.Column(db.Integer, db.ForeignKey('classes.class_id'), nullable=False)
-    passenger_location = db.Column(db.String(100), nullable=False)
-    passenger_destination = db.Column(db.String(100), nullable=False)
-    pick_up_time = db.Column(db.DateTime, nullable=False)
-    passenger_rating = db.Column(db.Integer, nullable=True)
-    driver_rating = db.Column(db.Integer, nullable=True)
+    teacher_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    email = db.Column(db.String(50), nullable=False)
+    password = db.Column(db.String(50), nullable=False)
+    firstname = db.Column(db.String(30), nullable=False)
+    lastname = db.Column(db.String(30), nullable=False)
+    phonenumber = db.Column(db.String(15), nullable=False)
+    
 
 
-	#define relationship to the driver
-    driver = db.relationship("Driver", backref="rides")
+def __repr__(self):
+        """Provide helpful representation when printed."""
 
-    #define relationship to the user
-    passenger = db.relationship("Passenger", backref="rides")
+        return ("<Teacher teacher_id=%s firstname=%s lastname=%s email=%s phonenumber=%s>"
+                                                            % (self.teacher_id,
+                                                                self.firstname,
+                                                                self.lastname,
+                                                                self.phonenumber))
 
-
-
-
-
-
-
-
+#######################################################################################################
 
 
 
+class Parent (db.Model):
+    """Parents"""
+
+    __tablename__ = "parents"
+
+    parent_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    email = db.Column(db.String(50), nullable=False)
+    password = db.Column(db.String(50), nullable=False)
+    firstname = db.Column(db.String(30), nullable=False)
+    lastname = db.Column(db.String(30), nullable=False)
+    phonenumber = db.Column(db.String(15), nullable=False)
+    
 
 
+def __repr__(self):
+        """Provide helpful representation when printed."""
 
+        return ("<Parent parent_id=%s firstname=%s lastname=%s email=%s phonenumber=%s>"
+                                                            % (self.parent_id,
+                                                            	self.firstname,
+                                                                self.lastname,
+                                                                self.phonenumber))
+
+
+#######################################################################################################
+
+class Student (db.Model):
+    """Students"""
+
+    __tablename__ = "students"
+
+    student_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    email = db.Column(db.String(50), nullable=False)
+    password = db.Column(db.String(50), nullable=False)
+    firstname = db.Column(db.String(30), nullable=False)
+    lastname = db.Column(db.String(30), nullable=False)
+    phonenumber = db.Column(db.String(15), nullable=True)
+    
+
+
+def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return ("<Student student_id=%s firstname=%s lastname=%s email=%s phonenumber=%s>"
+                                                            % (self.student_id,
+                                                                self.firstname,
+                                                                self.lastname,
+                                                                self.phonenumber))
+
+#######################################################################################################
+
+class Course (db.Model):
+    """Courses"""
+
+    __tablename__ = "courses"
+
+    course_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    title = db.Column(db.String(150), nullable=False)
+    description = db.Column(db.String(1000), nullable=True)
+    teacher_id = b.Column(db.Integer, db.ForeignKey('teachers.teacher_id'), nullable=False)
+    
+
+
+def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return ("<Courses course_id=%s title=%s description=%s teacher_id=%s>"
+                                                            % (self.course_id,
+                                                                self.title,
+                                                                self.description,
+                                                                self.teacher_id))
 
 
 
