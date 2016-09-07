@@ -107,7 +107,32 @@ def __repr__(self):
                                                                 self.description,
                                                                 self.teacher_id))
 
+#######################################################################################################
 
+class Assignment (db.Model):
+    """Assignments"""
+
+    __tablename__ = "assignments"
+
+    assign_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    title = db.Column(db.String(150), nullable=False)
+    description = db.Column(db.String(1000), nullable=True)
+    date_due = db.Column(db.Integer, nullable=False)
+    teacher_id = db.Column(db.Integer, db.ForeignKey('teachers.teacher_id'), nullable=False)
+    
+
+
+def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return ("<Assignments assign_id=%s title=%s description=%s date_due=%s teacher_id=%s>"
+                                                            % (self.assign_id,
+                                                                self.title,
+                                                                self.description,
+                                                                self.date_due,
+                                                                self.teacher_id))
+
+#######################################################################################################
 
 
 
